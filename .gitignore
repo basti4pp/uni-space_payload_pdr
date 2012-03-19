@@ -1,0 +1,15 @@
+*.aux
+*.log
+*.backup
+*~
+*.pyc
+*.toc
+*.nav
+*.out
+*.snm
+report_pdr-blx.bib
+*.synctex.gz
+*.o
+*.elf
+*.synctex.gz
+*.lof
