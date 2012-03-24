@@ -1,0 +1,130 @@
+\documentclass[fontsize=11pt,paper=a4,]{scrartcl}
+
+% use pdflatex to compile the document!
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc} % character encoding
+\usepackage[pdftex]{graphicx} % for including images
+%\usepackage[sorting=none]{biblatex} % include reference list
+\usepackage{lscape} % allow landscape formats of single pages
+\usepackage{microtype} % Improve microtypography
+\usepackage{lmodern}
+\addtokomafont{disposition}{\boldmath} % bold math text in section names
+\usepackage{lipsum}
+\usepackage{placeins} % provides \FloatBarrier to keep floats in right chapter
+\usepackage{fancyhdr} % for fancy headers
+
+% Symbols
+\usepackage{amssymb} % Mathematical Symbols
+\usepackage{amsmath} % Mehr mathematische Konstrukte
+
+
+\usepackage{listings} % Include source code files
+\usepackage[toc,page]{appendix}	% Use different layout for the appendix and include a Table Of Contents (TOC)
+\usepackage{geometry} % Allow changing of page margin
+\usepackage{acronym} % For creating acronyms in document
+
+
+% Colors & Links
+\usepackage{color, xcolor}
+\usepackage[pdftex]{hyperref} % Enable hyperlinks
+\hypersetup{colorlinks=true,
+linkcolor=black,
+citecolor=black,
+filecolor=black,
+urlcolor=black,
+pdftitle={HydraSat -- Critical Design Review}}
+
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\degr}{\ensuremath{^\circ}}
+\newcommand{\cel}{\ensuremath{\degr\mathrm{C}}}
+\newcommand{\dif}{\ensuremath{\mathrm{d}}}
+\newcommand{\ee}[1]{\ensuremath{\cdot 10^{#1}}}
+
+\newcommand{\writtenby}[1]{\vspace{-0.5\baselineskip}\textit{written by #1}
+\\% this linebreak is intentional
+
+}
+
+\graphicspath{{graphics/}}
+
+% more space for graphics on each page
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0.1}
+
+% formatting options
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+\pagestyle{fancy}
+\fancyhead[RH]{UniSpace imaging subsystem PDR}
+
+
+
+\begin{document}
+\sloppy
+\thispagestyle{plain}
+\begin{center}
+\title{Unispace imaging subsystem -- Preliminary Design Review}
+\author{Jan, Bastian, Oliver, Omair}
+\date{March 26, 2012}
+%\maketitle
+
+
+{\bf{\textsf{\huge UniSpace -- Preliminary Design Review}}}\\[\baselineskip]
+\begin{Large}
+Spacemaster Round 7 Project\\[\baselineskip]
+Imaging payload subsystem\\
+March 26, 2012\\
+\end{Large}
+\end{center}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Subsystem Introduction}
+The Imaging Payload Subsystem (IPS) is the scientific payload of the airship, and will be independent of the airship project to a large extent.
+The purpose of IPS is to take aerial images from different positions, acquire accurate position and attitude data and use use those combined information to create aerial image maps and extract further information from the images such as terrain height, 3D object recognition and possibly image-aided attitude control and path planning.
+This could be used as a learning platform to simulation environment for Low Earth Orbit imaging.
+
+The system is further divided into the following parts:
+\begin{itemize}
+\item Attitude determination: Usage of advanced data fusion method to facilitate GPS, Gyro, Accelerometer and Magnetometer information, to extract accurate position and attitude information together with reasonable error estimates.
+\item Imaging system: A Mpx resolution webcam will provide images in regular timesteps in the order of a second.
+The image data will be saved on a SD memory card together with attitude information for offline processing.
+\item Communication system: Attitude data and possibly spacecraft telemetry will be transmitted to ground.
+We try to achieve high bandwidth transmission that could even allow for image downlink.
+\item Image processing software:
+Image matching and evaluation will be done on a standard PC after payload recovery or online if the transmission rate can be made sufficient.
+There will also be a groundstation that communicates with the spacecraft during flight.
+\end{itemize}
+
+
+\section{Technical and functional requirements}
+\subsection{Functional requirements}
+\begin{itemize}
+\item Measure absolute and accurate position and pointing angles.
+\item Take images in regular steps and save them together with attitude data.
+\item Receive and execute basic telecommands such as image capture start/stop.
+\item Send basic telemetry data such as position.
+\item Combine single image captures to a large area map.
+\end{itemize}
+
+
+\subsection{Technical requirements}
+\begin{itemize}
+\item Operate in open air environment up to 800m over ground.
+\item Operate at 5V unstabilized input voltage at a maximum power consumption of 2.5W.
+\item Store at least 1000 medium-resolution images.
+\end{itemize}
+
+
+\subsection{Expected performance}
+\begin{itemize}
+\item Operate in image capture mode for at least 15 minutes.
+\item Create aerial images with 10cm horizontal resoultion, 0.5m relative and 7m absolute height information.
+\end{itemize}
+
+
+\end{document}
