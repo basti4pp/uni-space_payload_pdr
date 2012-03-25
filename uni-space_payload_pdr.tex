@@ -13,6 +13,8 @@
 \usepackage{lipsum}
 \usepackage{placeins} % provides \FloatBarrier to keep floats in right chapter
 \usepackage{fancyhdr} % for fancy headers
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
 
 % Symbols
 \usepackage{amssymb} % Mathematical Symbols
@@ -85,13 +87,13 @@ March 26, 2012\\
 
 \section{Subsystem Introduction}
 The Imaging Payload Subsystem (IPS) is the scientific payload of the airship, and will be independent of the airship project to a large extent.
-The purpose of IPS is to take aerial images from different positions, acquire accurate position and attitude data and use use those combined information to create aerial image maps and extract further information from the images such as terrain height, 3D object recognition and possibly image-aided attitude control and path planning.
+The purpose of IPS is to take aerial images from different positions, acquire accurate position and attitude data and use those combined information to create aerial image maps and extract further information from the images such as terrain height, 3D object recognition and possibly image-aided attitude control and path planning.
 This could be used as a learning platform to simulation environment for Low Earth Orbit imaging.
 
 The system is further divided into the following parts:
 \begin{itemize}
 \item Attitude determination: Usage of advanced data fusion method to facilitate GPS, Gyro, Accelerometer and Magnetometer information, to extract accurate position and attitude information together with reasonable error estimates.
-\item Imaging system: A Mpx resolution webcam will provide images in regular timesteps in the order of a second.
+\item Imaging system: A megapixel resolution webcam will provide images in regular timesteps in the order of a second.
 The image data will be saved on a SD memory card together with attitude information for offline processing.
 \item Communication system: Attitude data and possibly spacecraft telemetry will be transmitted to ground.
 We try to achieve high bandwidth transmission that could even allow for image downlink.
@@ -103,6 +105,7 @@ There will also be a groundstation that communicates with the spacecraft during 
 
 \section{Technical and functional requirements}
 \subsection{Functional requirements}
+\label{sub:Functional_requirements}
 \begin{itemize}
 \item Measure absolute and accurate position and pointing angles.
 \item Take images in regular steps and save them together with attitude data.
@@ -123,8 +126,55 @@ There will also be a groundstation that communicates with the spacecraft during 
 \subsection{Expected performance}
 \begin{itemize}
 \item Operate in image capture mode for at least 15 minutes.
-\item Create aerial images with 10cm horizontal resoultion, 0.5m relative and 7m absolute height information.
+\item Create aerial images with 10cm horizontal resoultion, 0.5m relative and 7m absolute height information. {\color{red} What does this exactly mean? That you want to see objects of 10cm length?}
 \end{itemize}
+
+\section{Electronic components}
+
+In this section an overview about the requirements and the planned electronic components is given. In order to achieve the functional requirements mentioned in \ref{sub:Functional_requirements} following components are needed:
+
+\begin{itemize}
+ \item Board computer
+ \item Accelerometer
+ \item Magnetometer
+ \item Gyroscope
+ \item GPS-receiver
+ \item Transmitter/Receiver
+ \item Camera
+\end{itemize}
+
+
+\subsection*{Board computer}
+
+For controlling the sensors and the camera as well as communicating with the ground station first a standard microcontroller was considered, but as the requirements in \ref{sub:Functional_requirements} state, it is necessary to get a picture around every second. Also the resolution of the pictures should be in the range of some megapixels. Taken this into account, a standard microcontroller would not be able to process these amounts of data fast as well as it normally does not come with a USB-interface necessary for connecting most cameras.
+
+Instead it was decided to use a BeagleBone embedded computer {\color{red} ref to data sheet}. It is populated with an ARM Cortex-A8 microprocessor running at 500 -- 700 MHz and provides an USB-port, several I{\texttwosuperior}C and serial interfaces. It is capable of running an embedded Linux operation system and therefore able to support a large varity of devices (plugged to the USB-port) and to provide the possibility for sophisticated onboard calculations from a large set of libraries.
+
+\subsection*{Sensors}
+
+For sensors it is planned to use the LSM303 {\color{red} ref to datasheet} combined magnetometer and accelerometer and the ITG-3200 triple-axis gyroscope {\color{red} ref to datasheet} from sparkfun. Both sensors have been used during the CanSat-project in Würzburg, hence the group is familiar with working with this sensors. They communicate via an I{\texttwosuperior}C interface with the main board. For receiving GPS information a LS20031 5~Hz GPS receiver {\color{red} ref to datasheet} can be used. It is connected via a serial line interface with the main board.
+
+\subsection*{Transmitter/Receiver}
+
+Yada yada yada yada yada yada yada yada yada yada yada yada .....
+
+\subsection*{Camera}
+
+As high quality embedded industrial cameras are very high priced it is planned to connect a consumer webcam with a resolution of several megapixels to the USB-port of the main board. It is intended to buy a camera which is supported by the Linux operating system running on the main board. To save weight, the case of the webcam will be stripped as much possible leaving only the bare camera and electronics. An example of a compatible camera would be the Logitech HD Webcam C525 {\color{red} ref to data sheet}.
+
+
+\section{Discussions/Questions}
+
+I (Jan) will take {\color{green} a green color}:
+
+{\color{green} So what kind of sections are missing? Here what came to my mind:
+\begin{itemize}
+ \item Budget
+ \item Power-Budget
+ \item Something about the how of sensor fusion?
+ \item Something about the how of image processing?
+\end{itemize}
+}
 
 
 \end{document}
