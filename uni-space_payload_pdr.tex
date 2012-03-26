@@ -3,28 +3,36 @@
 % use pdflatex to compile the document!
 
 \usepackage[english]{babel}
-\usepackage[latin1]{inputenc} % character encoding
-\usepackage[pdftex]{graphicx} % for including images
-%\usepackage[sorting=none]{biblatex} % include reference list
-\usepackage{lscape} % allow landscape formats of single pages
-\usepackage{microtype} % Improve microtypography
+\usepackage[margin=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{lmodern}
+%\usepackage[sorting=none]{biblatex}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[textfont={small,it},labelfont=bf,labelsep=endash]{caption}
+\usepackage[table]{xcolor}
+\usepackage{verbatim}
+\usepackage[toc,page]{appendix}
+\usepackage{amssymb} % Mathematical Symbols
+\usepackage{amsmath}
+\usepackage{multicol}	% allow multi column environemnt
+%\usepackage{mathtools}
+%\usepackage[framed,numbered]{mcode}
+\usepackage{acronym}
+\usepackage{rotating}
+\usepackage{titling}
+\usepackage{bibcheck}
+%\usepackage{pdfpages}
+%\usepackage[pdfpagemode=FullScreen,pdfstartview=FitH,pdfborder={0 0 0},pdftitle={My report},bookmarks,pdfauthor={Morten Olsen}]{hyperref}
+\usepackage{memhfixc}
+%\usepackage{maplestd2e}
 \addtokomafont{disposition}{\boldmath} % bold math text in section names
 \usepackage{lipsum}
 \usepackage{placeins} % provides \FloatBarrier to keep floats in right chapter
-\usepackage{fancyhdr} % for fancy headers
-\usepackage[T1]{fontenc}
+\usepackage{geometry} % Allow changing of page margin
 \usepackage{textcomp}
 
-% Symbols
-\usepackage{amssymb} % Mathematical Symbols
-\usepackage{amsmath} % Mehr mathematische Konstrukte
-
-
-\usepackage{listings} % Include source code files
-\usepackage[toc,page]{appendix}	% Use different layout for the appendix and include a Table Of Contents (TOC)
-\usepackage{geometry} % Allow changing of page margin
-\usepackage{acronym} % For creating acronyms in document
 
 
 % Colors & Links
@@ -43,12 +51,25 @@ pdftitle={HydraSat -- Critical Design Review}}
 \newcommand{\dif}{\ensuremath{\mathrm{d}}}
 \newcommand{\ee}[1]{\ensuremath{\cdot 10^{#1}}}
 
-\newcommand{\writtenby}[1]{\vspace{-0.5\baselineskip}\textit{written by #1}
-\\% this linebreak is intentional
 
-}
 
-\graphicspath{{graphics/}}
+\definecolor{tableshade}{HTML}{E8E8E8}
+\linespread{1.3}
+
+
+\fancyhead{}
+\fancyhead[RE,RO]{\parbox[b]{10cm}{\raggedleft U-SPACE\\ \today}}
+\fancyhead[LE,LO]{\parbox[b]{10cm}{\docreference \\ \title }}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhfoffset{1cm}
+\addtolength{\headheight}{1cm}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\graphicspath{{figures/}}
+
 
 % more space for graphics on each page
 \renewcommand{\topfraction}{1}
@@ -62,28 +83,49 @@ pdftitle={HydraSat -- Critical Design Review}}
 \fancyhead[RH]{UniSpace imaging subsystem PDR}
 
 
+% PLEASE FILL IN THE RELEVANT INFORMATION BELOW:
+%
+\def\authors{
+Bastian \textsc{Hacker}\\
+Oliver \textsc{Porges}\\
+Omair \textsc{Sarwar}\\
+Jan \textsc{Sommer}
+}
+\def\docversion{DRAFT}					% Possible versions are: DRAFT, REVIEW or RELEASED
+\def\docreference{USPACE-PDR-imaging~payload-00}	% -00 = DRAFT,  -A1 = 1st release,  -A2 = 1st release with minor updates, -B1, = 2nd release
+\def\title{Preliminary Design Report}
+\def\subtitle{imaging subsystem}
+
 
 \begin{document}
 \sloppy
-\thispagestyle{plain}
-\begin{center}
-\title{Unispace imaging subsystem -- Preliminary Design Review}
-\author{Jan, Bastian, Oliver, Omair}
-\date{March 26, 2012}
-%\maketitle
 
+\input{titlepage}
 
-{\bf{\textsf{\huge UniSpace -- Preliminary Design Review}}}\\[\baselineskip]
-\begin{Large}
-Spacemaster Round 7 Project\\[\baselineskip]
-Imaging payload subsystem\\
-March 26, 2012\\
-\end{Large}
-\end{center}
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\include{acronyms}
+
+\markboth{List of Figures}{List of Figures}
+\addcontentsline{toc}{section}{\protect\numberline{}List of Figures}
+\listoffigures
+\newpage
+
+\markboth{List of Tables}{List of Tables}
+\addcontentsline{toc}{section}{\protect\numberline{}List of Tables}
+\listoftables
 \newpage
 
 \tableofcontents
 \newpage
+\acresetall	%reset acronyms which is otherwise used in list of figures or tables
+\clearpage %reset page numbers
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+
+
 
 \section{Subsystem Introduction}
 The Imaging Payload Subsystem (IPS) is the scientific payload of the airship, and will be independent of the airship project to a large extent.
@@ -175,6 +217,8 @@ I (Jan) will take {\color{green} a green color}:
  \item Something about the how of image processing?
 \end{itemize}
 }
+
+% Bibliography still missing!!
 
 
 \end{document}
