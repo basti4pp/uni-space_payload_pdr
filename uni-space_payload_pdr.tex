@@ -175,11 +175,13 @@ There will also be a groundstation that communicates with the spacecraft during 
 \subsection{Expected performance}
 \begin{itemize}
 \item Operate in image capture mode for at least 15 minutes.
-\item Create aerial images with 10cm horizontal resoultion, 0.5m relative and 7m absolute height information. {\color{red} What does this exactly mean? That you want to see objects of 10cm length?}
+\item Create aerial images with 10cm horizontal resoultion (pixel size).
+\item Optional: Extract height information with 0.5m relative and 7m absolute resulution.
 \end{itemize}
 
-\section{Electronic components}
+\section{Preliminary Design}
 
+\subsection{Electronic components}
 In this section an overview about the requirements and the planned electronic components is given. In order to achieve the functional requirements mentioned in \ref{sub:Functional_requirements} following components are needed:
 
 \begin{itemize}
@@ -193,23 +195,34 @@ In this section an overview about the requirements and the planned electronic co
 \end{itemize}
 
 
-\subsection*{Board computer}
+\subsubsection*{Board computer}
 
 For controlling the sensors and the camera as well as communicating with the ground station first a standard microcontroller was considered, but as the requirements in \ref{sub:Functional_requirements} state, it is necessary to get a picture around every second. Also the resolution of the pictures should be in the range of some megapixels. Taken this into account, a standard microcontroller would not be able to process these amounts of data fast as well as it normally does not come with a USB-interface necessary for connecting most cameras.
 
 Instead it was decided to use a BeagleBone embedded computer \cite{BeagleBone:SRM}. It is populated with an ARM Cortex-A8 microprocessor running at 500 -- 700 MHz and provides an USB-port, several I{\texttwosuperior}C and serial interfaces. It is capable of running an embedded Linux operation system and therefore able to support a large varity of devices (plugged to the USB-port) and to provide the possibility for sophisticated onboard calculations from a large set of libraries.
 
-\subsection*{Sensors}
+\subsubsection*{Sensors}
 
 For sensors it is planned to use the LSM303 \cite{LSM303:datasheet} combined magnetometer and accelerometer and the ITG-3200 triple-axis gyroscope \cite{ITG-3200:datasheet} from sparkfun. Both sensors have been used during the CanSat-project in Würzburg, hence the group is familiar with working with this sensors. They communicate via an I{\texttwosuperior}C interface with the main board. For receiving GPS information a LS20031 5~Hz GPS receiver \cite{LS20031:datasheet} can be used. It is connected via a serial line interface with the main board.
 
-\subsection*{Transmitter/Receiver}
+\subsubsection*{Transmitter/Receiver}
 
 Yada yada yada yada yada yada yada yada yada yada yada yada .....
 
-\subsection*{Camera}
+\subsubsection*{Camera}
 
 As high quality embedded industrial cameras are very high priced it is planned to connect a consumer webcam with a resolution of several megapixels to the USB-port of the main board. It is intended to buy a camera which is supported by the Linux operating system running on the main board. To save weight, the case of the webcam will be stripped as much possible leaving only the bare camera and electronics. An example of a compatible camera would be the Logitech HD Webcam C525\footnote{\url{http://www.logitech.com/de-de/webcam-communications/webcams/devices/7794}}.
+
+
+\section{Test and Verification of Design}
+???
+
+
+\section{Resources and Scheduling}
+\subsection{Main Tasks}
+\subsection{Parts List and Costs}
+\subsection{Electronics Ground Support Equipment (EGSE)}
+\subsection{Mechanical Ground Support Equipment (MGSE)}
 
 
 \section{Discussions/Questions}
