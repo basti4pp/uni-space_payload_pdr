@@ -26,6 +26,10 @@
 \usepackage{geometry} % Allow changing of page margin
 \usepackage{acronym} % For creating acronyms in document
 
+%Bibliography 
+% You need biblatex-package. Ubuntu: sudo apt-get install biblatex
+\usepackage[style=numeric-comp]{biblatex}
+\bibliography{library.bib}
 
 % Colors & Links
 \usepackage{color, xcolor}
@@ -148,11 +152,11 @@ In this section an overview about the requirements and the planned electronic co
 
 For controlling the sensors and the camera as well as communicating with the ground station first a standard microcontroller was considered, but as the requirements in \ref{sub:Functional_requirements} state, it is necessary to get a picture around every second. Also the resolution of the pictures should be in the range of some megapixels. Taken this into account, a standard microcontroller would not be able to process these amounts of data fast as well as it normally does not come with a USB-interface necessary for connecting most cameras.
 
-Instead it was decided to use a BeagleBone embedded computer {\color{red} ref to data sheet}. It is populated with an ARM Cortex-A8 microprocessor running at 500 -- 700 MHz and provides an USB-port, several I{\texttwosuperior}C and serial interfaces. It is capable of running an embedded Linux operation system and therefore able to support a large varity of devices (plugged to the USB-port) and to provide the possibility for sophisticated onboard calculations from a large set of libraries.
+Instead it was decided to use a BeagleBone embedded computer \cite{BeagleBone:SRM}. It is populated with an ARM Cortex-A8 microprocessor running at 500 -- 700 MHz and provides an USB-port, several I{\texttwosuperior}C and serial interfaces. It is capable of running an embedded Linux operation system and therefore able to support a large varity of devices (plugged to the USB-port) and to provide the possibility for sophisticated onboard calculations from a large set of libraries.
 
 \subsection*{Sensors}
 
-For sensors it is planned to use the LSM303 {\color{red} ref to datasheet} combined magnetometer and accelerometer and the ITG-3200 triple-axis gyroscope {\color{red} ref to datasheet} from sparkfun. Both sensors have been used during the CanSat-project in Würzburg, hence the group is familiar with working with this sensors. They communicate via an I{\texttwosuperior}C interface with the main board. For receiving GPS information a LS20031 5~Hz GPS receiver {\color{red} ref to datasheet} can be used. It is connected via a serial line interface with the main board.
+For sensors it is planned to use the LSM303 \cite{LSM303:datasheet} combined magnetometer and accelerometer and the ITG-3200 triple-axis gyroscope \cite{ITG-3200:datasheet} from sparkfun. Both sensors have been used during the CanSat-project in Würzburg, hence the group is familiar with working with this sensors. They communicate via an I{\texttwosuperior}C interface with the main board. For receiving GPS information a LS20031 5~Hz GPS receiver \cite{LS20031:datasheet} can be used. It is connected via a serial line interface with the main board.
 
 \subsection*{Transmitter/Receiver}
 
@@ -176,5 +180,6 @@ I (Jan) will take {\color{green} a green color}:
 \end{itemize}
 }
 
+\printbibliography
 
 \end{document}
