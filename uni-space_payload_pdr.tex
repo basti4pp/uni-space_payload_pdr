@@ -265,12 +265,27 @@ aligned and combine them into one large array.
 \subsection{Attitude Determination System}
 The Attitude Determination System (ADS) measures and estimates position and pointing direction of the payload system.
 This is crucial for the further use of recordet images, as it provides the reference system and relative alignment of the taken images towards each other.
-\begin{figure}[bht]
+\begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/ADS_diagram.pdf}
 \caption{Attitude Determination System overview}
 \label{fig:ADS_overview}
 \end{figure}
+
+In order to produce high-accuracy attitude estimates and compensate for disadvantages of certain sensor types such as drift and noise, we chose to use a variety of sensors and fuse their information to a combined information.
+The facilitated sensors will be (\ref{fig:ADS_overview}):
+\begin{itemize}
+\item GPS receiver: Provides absolute position values, but has much high-frequency noise
+\item Gyroscope: Provides accurate relative pointing direction, but has drift.
+\item Accerelometer: Provides absoulte pointing relative to the horizon (gravity) and linear acceleration.
+\item Magnetometer: Provides absolute pointing relative to the earth's magnetic field.
+\end{itemize}
+
+Combined all together, these sensors provide complete information about the module's attitude.
+As a fusion method we will use well-understood algorithms, such as the extended Kalman filter.
+
+The fused information will be updated in real-time and stored together with each image snapshot.
+
 
 
 \section{Test and Verification of Design}
