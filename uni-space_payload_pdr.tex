@@ -219,47 +219,37 @@ Yada yada yada yada yada yada yada yada yada yada yada yada .....
 As high quality embedded industrial cameras are very high priced it is planned to connect a consumer webcam with a resolution of several megapixels to the USB-port of the main board. It is intended to buy a camera which is supported by the Linux operating system running on the main board. To save weight, the case of the webcam will be stripped as much possible leaving only the bare camera and electronics. An example of a compatible camera would be the Logitech HD Webcam C525\footnote{\url{http://www.logitech.com/de-de/webcam-communications/webcams/devices/7794}}.
 
 \section{Software environment}
-In order to achieve advanced capabilities and increase the scientific importance of the project we 
-want to incorporate the state-of-the-art software environment. Since we will run Linux as a basic underlying
-layer we will deploy Robot Operating System (ROS) as a middle-ware. This system is a modern framework
+Since a Linux operating system is run as a basic software layer, it is planned to deploy the Robot Operating System (ROS) as a middle-ware. This system is a modern framework
 for mobile robotic applications. Its main advantage is the interoperability of modules and inter-use of underlying 
-layers. This dramatically increases the flexibility of future research and overall system robustness. 
-Since ROS is an open-source system along with it's packages it is used for knowledge exchange and 
-achievement demonstration in terms of modern algorithms. These algorithms include Simultaneous Localization
+layers. This increases the flexibility of future research and overall system robustness. Since ROS is an open-source system along with its packages it is used for knowledge exchange and achievement demonstration in terms of modern algorithms. These algorithms include Simultaneous Localization
 And Mapping (SLAM), Navigation and position control, Image processing and many more.  
 
 \section{Image processing}
-Our main goal is to take numerous aerial images and combine them into one usable map. This system should then be able
+The main goal is to take numerous aerial images and combine them into one usable map. This system should then be able
 to automatically collect images over a given area and produce an aerial map. A proposed solution
 for image matching is described in section ~\ref{sec:algorithm}
 
 \subsection{Image matching}
 \label{sec:algorithm}
-Our proposed solution should be very robust to different illumination conditions and overall image quality, namely sharpness. 
+The proposed solution should be very robust to different illumination conditions and overall image quality, namely sharpness. 
 \begin{enumerate}
 \item Step\\
-We need to extract common and significant points from all the images in question. Since the images
-will be taken in sequence we can assume that there will be a high correlation in the neighboring pictures.
-Having this assumption we can implement an algorithm proposed in [bib-ref], finding 
-the Points of Interest (POI) based on histogram leveling. 
+It is needed to extract common and significant points from all the images in question. Since the images
+will be taken in sequence it can be assumed that there will be a high correlation in the neighboring pictures.
+Having this assumption an algorithm proposed in [bib-ref] can be implemented for finding 
+Points of Interest (POI) based on histogram leveling. 
 \item Step \\
-Having a reliable set of POI we can use another technique to match the points together. This part is
-computationally intensive. In order to be able to use it in real-time we suggest to use the Iterative Closest Point
+Having a reliable set of POI another technique to match the points together can be used. This part is
+computationally intensive. In order to be able to use it in real-time it is recommended to use the Iterative Closest Point
 algorithm already implemented and optimized in the Point Cloud Library[bib-ref].
 \item Step\\
-By knowing the difference between two set of points in two consecutive images we can calculate
+By knowing the difference between two set of points in two consecutive images it is possible to calculate
 a very precise transformation matrix. The transformation will be determined by how many points
-we are able to find. The expectation in a general scenery and medium resolution picture
+could be found in the previous step. The expectation in a general scenery and medium resolution picture
 is about a 100 points. This would be enough even to compensate for camera deformation.
 \item Step \\
-As a last step we have to apply the transformation obtained before for the images to be precisely 
-aligned and combine them into one large array. 
+As a last step the transformation matrix obtained before has to be applied to the images before combining them into one large array. 
 \end{enumerate}
-
-
-
-
-
 
 \FloatBarrier
 \subsection{Attitude Determination System}
