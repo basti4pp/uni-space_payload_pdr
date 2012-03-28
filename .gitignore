@@ -13,3 +13,13 @@ uni-space_payload_pdr.pdf
 *.elf
 *.synctex.gz
 *.lof
+
+uni-space_payload_pdr.lot
+
+.DS_Store
+
+uni-space_payload_pdr-blx.bib
+
+uni-space_payload_pdr.run.xml
+
+uni-space_payload_pdr.uncited
