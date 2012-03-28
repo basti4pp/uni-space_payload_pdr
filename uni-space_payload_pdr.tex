@@ -135,7 +135,7 @@ Jan \textsc{Sommer}
 
 
 \section{Subsystem Introduction}
-The Imaging Payload Subsystem (IPS) is the scientific payload of the airship, and will be independent of the airship project to a large extent.
+The Imaging and Tracking Payload Unit (ITPU) is the scientific payload of the airship, and will be independent of the airship project to a large extent.
 The purpose of IPS is to take aerial images from different positions, acquire accurate position and attitude data and use those combined information to create aerial image maps and extract further information from the images such as terrain height, 3D object recognition and possibly image-aided attitude control and path planning.
 This could be used as a learning platform to simulation environment for Low Earth Orbit imaging.
 
@@ -147,7 +147,7 @@ The image data will be saved on a SD memory card together with attitude informat
 \item Communication system: Attitude data and spacecraft telemetry will be transmitted to ground.
 We try to achieve high bandwidth transmission that could even allow for image downlink.
 \item Image processing software:
-Image matching and evaluation will be done on a standard PC after payload recovery or online if the transmission rate can be made sufficient.
+Image matching and evaluation will be done on a standard PC after payload recovery or in realtime if the transmission rate can be made sufficient.
 There will also be a groundstation that communicates with the spacecraft during flight.
 \end{itemize}
 
@@ -166,7 +166,7 @@ There will also be a groundstation that communicates with the spacecraft during 
 
 \subsection{Technical requirements}
 \begin{itemize}
-\item Operate in open air environment up to 800m over ground.
+\item Operate in open air environment up to 500m over ground.
 \item Operate at 5V unstabilized input voltage at a maximum power consumption of 2.5W.
 \item Store at least 1000 medium-resolution images.
 \end{itemize}
@@ -239,6 +239,9 @@ Combined all together, these sensors provide complete information about the modu
 As a fusion method we will use well-understood algorithms, such as the extended Kalman filter.
 
 The fused information will be updated in real-time and stored together with each image snapshot.
+
+For development of the software, a simulation module will be written thats feeds simulated measurement data into the fusion algorithm.
+By this the performance can be quantified and development gets much faster than with waiting for actual measurement data. 
 
 
 \FloatBarrier
