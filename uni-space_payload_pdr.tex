@@ -144,7 +144,7 @@ The system is further divided into the following parts:
 \item Attitude determination: Usage of advanced data fusion method to facilitate GPS, Gyro, Accelerometer and Magnetometer information, to extract accurate position and attitude information together with reasonable error estimates.
 \item Imaging system: A megapixel resolution webcam will provide images in regular timesteps in the order of a second.
 The image data will be saved on a SD memory card together with attitude information for offline processing.
-\item Communication system: Attitude data and possibly spacecraft telemetry will be transmitted to ground.
+\item Communication system: Attitude data and spacecraft telemetry will be transmitted to ground.
 We try to achieve high bandwidth transmission that could even allow for image downlink.
 \item Image processing software:
 Image matching and evaluation will be done on a standard PC after payload recovery or online if the transmission rate can be made sufficient.
@@ -278,11 +278,31 @@ As a last step the transformation matrix obtained before has to be applied to th
 
 \FloatBarrier
 \section{Test and Verification of Design}
-???
+\subsection{Design Models and Verification Methods}
+\begin{itemize}
+\item A Development Model (DM) will be built, using a breadboard to connect the electronic components together. System stability will be monitored by sequence of tests. Modifications of the software will be done if needed.
+\item If time allows, a Flight Model (FM) will be build, using a custom designed PCB schematic layout. This design would minimize circuit mass, size and internal losses.
+\end{itemize}
 
 
 \section{Resources and Scheduling}
 \subsection{Main Tasks}
+\begin{table}[htbp!]
+\centering
+\caption{Main tasks}
+\label{tab:main_tasks}
+\begin{tabular}{| l | l | l |} \hline
+Task & Duration [days] & Dependence (finish-to-start) \\ \hline
+1. Electronic components assembly & 2 & \\ \hline
+2. Operating system installation on the microcontroller & 5 & \\ \hline
+3. Software development & 20 & 1,2 \\ \hline
+4. Testing & 5 & 1,2,3 \\ \hline
+5. Build PCB and test the subsystem & 10 & 1,2,3,4 \\ \hline
+\end{tabular}
+\vspace{-1.0em}
+\end{table}
+
+
 \subsection{Parts List and Costs}
 \subsection{Electronics Ground Support Equipment (EGSE)}
 \subsection{Mechanical Ground Support Equipment (MGSE)}
