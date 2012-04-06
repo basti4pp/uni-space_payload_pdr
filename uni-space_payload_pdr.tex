@@ -166,7 +166,7 @@ There will also be a groundstation that communicates with the spacecraft during 
 
 \subsection{Technical requirements}
 \begin{itemize}
-\item Operate in open air environment up to 500~m over ground.
+\item Operate in open air environment up to 500~m over ground. In U-Space the module will only fly to a height of a few 10s of meters. However it should be used in higher altitudes for later applications.
 \item Operate at 5~V unstabilized input voltage at a maximum power consumption of 2.5~W.
 \item Store at least 1000 medium-resolution images.
 \end{itemize}
@@ -226,8 +226,18 @@ For sensors it is planned to use the LSM303 \cite{LSM303:datasheet} combined mag
 
 \subsubsection*{Transmitter/Receiver}
 
-{\color{red} Optional for the communication during the flight mission a trasmitter/receiver module would be necessary. To download not only telemetry and housekeeping data but also images taken by the camera, it has to provide a preferably long range, low power consumption and a hight bandwidth. Therefore a small WiFi-module could be consiered sending in around 2.4 GHz frequency. If it is only considered to send telemetry and housekeeping data and receive commands, then a RF-module with lower bandwidth would be sufficient.}
+Optional for the communication during the flight mission a trasmitter/receiver module would be necessary. To download not only telemetry and housekeeping data but also images taken by the camera, it has to provide a preferably long range, low power consumption and a hight bandwidth. Therefore a small WiFi-module could be consiered sending in around 2.4 GHz frequency.
+%If it is only considered to send telemetry and housekeeping data and receive commands, then a RF-module with lower bandwidth would be sufficient.
 
+We are planning to use two WIFI transceivers with USB connectors.
+Those have a data rate up to 54Mbps, wich enabled us to transmit 1.7 raw images per second with 1.3Mpx re\-so\-lu\-tion or about 20 jpeg images, which enabled us live monitoring.
+A possible transceiver from FriendlyARM\footnote{\url{http://www.watterott.com/de/FriendlyARM-USB-WiFi-WLAN}} has an output power of 15dBm and a receive sensitivity of -71dBm at a frequency of 2.4GHz.
+Assuming near-isotropic antenna gain, the link budget
+\begin{equation}
+d = \frac{\lambda}{2}\cdot\sqrt{15\unit{dB}+71\unit{dB}} = 1250\unit{m}
+\end{equation}
+yields a sufficiently high free-space transmission range.
+Obstacles and non-isotropic gain may reduce this, but we can assume that the transmission over many 100 meters will be save.
 
 
 \subsubsection*{Camera}
