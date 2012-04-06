@@ -51,7 +51,7 @@ linkcolor=black,
 citecolor=black,
 filecolor=black,
 urlcolor=black,
-pdftitle={UniSpace -- Imaging and Tracking Payload Unit PDR}}
+pdftitle={U-Space -- Imaging and Tracking Payload Unit PDR}}
 
 \newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
 \newcommand{\degr}{\ensuremath{^\circ}}
@@ -88,7 +88,7 @@ pdftitle={UniSpace -- Imaging and Tracking Payload Unit PDR}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5\baselineskip}
 \pagestyle{fancy}
-\fancyhead[RH]{UniSpace Imaging and Tracking Payload Unit PDR}
+\fancyhead[RH]{U-Space Imaging and Tracking Payload Unit PDR}
 
 
 
@@ -98,7 +98,7 @@ Oliver \textsc{Porges}\\
 Ivan \textsc{\v Sinkarenko}\\
 Jan \textsc{Sommer}
 }
-\def\docversion{A1}					% Possible versions are: DRAFT, REVIEW or RELEASED
+\def\docversion{A2}					% Possible versions are: DRAFT, REVIEW or RELEASED
 \def\docreference{USPACE-PDR-ITPU-00}	% -00 = DRAFT,  -A1 = 1st release,  -A2 = 1st release with minor updates, -B1, = 2nd release
 \def\title{Preliminary Design Report}
 \def\subtitle{Imaging and Tracking Payload Unit}
@@ -309,19 +309,65 @@ Task & Duration [days] & Dependence (finish-to-start) \\ \hline
 \end{table}
 
 
+\FloatBarrier
 \subsection{Parts List and Costs}
-\begin{itemize}
-\item BeagleBone microcontroller board: 73€ + 13€ shipping
-\item Camera: Logitech Webcam: 319 SEK
-\item Accelerometer + Magnetometer: 30\$ + 5\$ shipping
-\item Gyroscope: 50\$
-\item GPS receiver: GPS-08975 from Sparkfun: 60\$
-\item Radio transmiter: 40€
-\item Radio transmitter groundstation: 40€
-\item SD card 8GB: 100 SEK
-\end{itemize}
-Total budget: 3000 SEK
+Several alternative hardware systems were evaluated.
+One was based on an AVR microcontroller, one on the BeagleBone (table \ref{tab:beaglebone}) and a FriendlyARM board (table \ref{tab:friendlyarm}).
+The AVR had the advantage that we have experience working with it, but it seemed uncapable of handling fast picture taking.
 
+\begin{table}[htb]
+\centering
+\caption{FriendlyARM -- parts list}
+\label{tab:friendlyarm}
+\rowcolors{3}{tableshade}{white}
+\begin{tabular}{||lm{0.08\textwidth}m{0.08\textwidth}m{0.16\textwidth}m{0.05\textwidth}l||}
+\hline\hline
+\textbf{part} &  \textbf{weight} & \textbf{power} & \textbf{supplier} & \textbf{cost}\\ 
+\hline
+\href{http://www.watterott.com/de/FriendlyARM-Mini2440-256MB}{FriendlyArm Mini2440} & 42g & 1.5W & Watterott  & 87€ \\
+Camera: \href{http://www.watterott.com/de/FriendlyARM-CAM130}{FriendlyARM CAM130}, 1.3Mpx & few g & 0.05W & Watterott & 19€ \\
+\href{http://www.watterott.com/index.php?page=product&info=2329}{Magnetometer + Accelerometer LSM303DLM} & 1g & 0.05W & Watterott & 29€ \\
+Gyro \href{http://www.watterott.com/de/Gyro-ITG-3200-Breakout}{ITG-3200} & few g & 0.03W & Watterott & 49€ \\
+GPS: \href{http://www.watterott.com/index.php?page=product\&info=701}{EM406 SiRF III GPS-Receiver} & 16g & 0.35W & Watterott & 39€ \\
+Radio transmiter & ? & ? & ? & 40€ \\
+Radio transmitter groundstation & ? & ? & ? & 40€ \\
+SD card 8GB & 1g & - & ? & 10€ \\
+Hole circuit board \& connections & 90g & - & lab & - \\
+Shipping & - & - & - & 9€ \\
+\hline
+\textbf{total:} & 150g & 2W & & 322€\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[htb]
+\centering
+\caption{Beagle Bone -- parts list}
+\label{tab:beaglebone}
+\rowcolors{3}{tableshade}{white}
+\begin{tabular}{||lm{0.08\textwidth}m{0.08\textwidth}m{0.16\textwidth}m{0.05\textwidth}l||}
+\hline\hline
+\textbf{part} &  \textbf{weight} & \textbf{power} & \textbf{supplier} & \textbf{cost}\\ 
+\hline
+BeagleBone microcontroller board & 37g & 2W & ? & 73€ \\
+Camera: \href{http://cdon.se/hemelektronik/logitech_hd_webcam_c525-17454333}{Logitech Webcam}, 0.9Mpx & ? & ? & ? & 36€ \\
+\href{http://www.watterott.com/index.php?page=product&info=2329}{Magnetometer + Accelerometer LSM303DLM} & 1g & 0.05W & Watterott & 29€ \\
+Gyro \href{http://www.watterott.com/de/Gyro-ITG-3200-Breakout}{ITG-3200} & few g & 0.03W & Watterott & 49€ \\
+GPS: \href{http://www.watterott.com/index.php?page=product\&info=701}{EM406 SiRF III GPS-Receiver} & 16g & 0.35W & Watterott & 39€ \\
+Radio transmiter & ? & ? & ? & 40€ \\
+Radio transmitter groundstation & ? & ? & ? & 40€ \\
+SD card 8GB & 1g & - & ? & 10€ \\
+Hole circuit board \& connections & 90g & - & lab & - \\
+Shipping & - & - & - & 27€ \\
+\hline
+\textbf{total:} & 200g & 2.5W ? & & 343€\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\FloatBarrier
 \subsection{Electronics Ground Support Equipment (EGSE)}
 \begin{itemize}
 \item Laboratory equipment: Digital oscilloscope, power supplies, solder iron, multimeter
