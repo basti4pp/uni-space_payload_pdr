@@ -194,12 +194,30 @@ In this section an overview about the requirements and the planned electronic co
  \item Camera
 \end{itemize}
 
-
+\FloatBarrier
 \subsubsection*{Board computer}
 
 For controlling the sensors and the camera as well as communicating with the ground station first a standard microcontroller was considered, but as the requirements in \ref{sub:Functional_requirements} state, it is necessary to get a picture around every second. Also the resolution of the pictures should be in the range of some megapixels. Taken this into account, a standard microcontroller would not be able to process these amounts of data fast as well as it normally does not come with a USB-interface necessary for connecting most cameras.
 
-Instead it was decided to use a BeagleBone embedded computer \cite{BeagleBone:SRM}. It is populated with an ARM Cortex-A8 microprocessor running at 500 -- 700 MHz and provides an USB-port, several I{\texttwosuperior}C and serial interfaces. It is capable of running an embedded Linux operating system and therefore able to support a large varity of devices (plugged to the USB-port) and to provide the possibility for sophisticated onboard calculations from a large set of libraries.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/beagle_bone.jpg}
+\caption{BeagleBone board}
+\label{fig:beaglebone_picture}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{figures/mini2440_3.jpg}
+\caption{FriendlyARM board}
+\label{fig:friendlyarm_picture}
+\end{figure}
+
+Two options for the microcontroller are considered.
+One is the BeagleBone embedded computer \cite{BeagleBone:SRM} (figure \ref{fig:beaglebone_picture}). It is populated with an ARM Cortex-A8 microprocessor running at 500 -- 700 MHz and provides an USB-port, several I{\texttwosuperior}C and serial interfaces. It is capable of running an embedded Linux operating system and therefore able to support a large varity of devices (plugged to the USB-port) and to provide the possibility for sophisticated onboard calculations from a large set of libraries.
+
+The other possible board is the FriendlyARM (figure \ref{fig:friendlyarm_picture}).
+It has a 400MHz processor and comes with all necessary interfaces.
+
 
 \subsubsection*{Sensors}
 
